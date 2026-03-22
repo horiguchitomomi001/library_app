@@ -27,3 +27,7 @@ app.use('/users/:userId/loans', usersRouter);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});

@@ -1,12 +1,16 @@
 import express from 'express';
 const router = express.Router();
-import { fetchDetailBook, fetchSearchBook, fetchCreateBook, fetchUpdateBook, fetchDeleteBook } from '../controllers/bookController.mjs';
+import { fetchListBook, fetchDetailBook, fetchSearchBook, fetchCreateBook, fetchUpdateBook, fetchDeleteBook } from '../controllers/bookController.mjs';
 // import { createBookValidator } from "../validators/bookValidator.mjs";
 // import { validate } from "../middleware/validate.mjs";
 import { authMiddleware } from "../middleware/authMiddleware.mjs";
 import { roleMiddleware } from "../middleware/roleMiddleware.mjs";
 
 //---書籍
+//表示
+router.get('/', async (req, res) => {
+    fetchListBook(req, res);
+});
 //検索
 router.get('/search', async (req, res) => {
     fetchSearchBook(req, res);

@@ -16,6 +16,17 @@ function BookManagement() {
     const [ addTitle, setAddTitle ] = useState('');
     const [ addAuthor, setAddAuthor ] = useState('');
 
+    // 表示
+    const fetchBooks = async () => {
+        const res = await fetch('http://localhost:3000/books', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        // const json = await res.json();
+        // setBook(json);
+    }
     //検索
     const searchBooks = async (searchTerm) => {
         const params = new URLSearchParams();
@@ -46,6 +57,9 @@ function BookManagement() {
         const json = await res.json();
         setBook(json);
     }
+    useEffect(() => {
+        fetchBooks();
+    }, []);
     return(
         <>
             {/* 検索 */}

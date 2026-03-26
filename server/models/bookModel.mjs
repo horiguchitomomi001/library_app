@@ -2,7 +2,7 @@ import { db } from '../db/bookDb.mjs';
 
 //---書籍
 //一覧
-export const getListBook = async () => {
+export const getAllBooks = async () => {
     try{
         const [rows] = await db.query('SELECT * FROM books');
         return rows;
@@ -23,6 +23,7 @@ export const searchBook = async (title, author) => {
             sql += ' AND author LIKE ?';
             params.push(`%${author}%`);
         }
+        console.log("bookModel.mjs", sql, params);
         const [rows] = await db.query(sql, params);
         return rows;
     } catch (err) {

@@ -1,13 +1,22 @@
-import { getListBook, getDetailBook, searchBook, createBook, updateBook, deleteBook, checkBookStatus, checkUserRole } from '../models/bookModel.mjs';
+import { getAllBooks, getDetailBook, searchBook, createBook, updateBook, deleteBook, checkBookStatus, checkUserRole } from '../models/bookModel.mjs';
 const BOOK_STATUS = ['available', 'borrowed', 'reserved'];
 
 //---書籍
+//表示
+export const fetchListBook = async (req, res) => {
+    try {
+        const books = await getAllBooks();
+        res.status(200).json(books);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
 //検索
 export const fetchSearchBook = async (req, res) => {
     try {
         const { title, author } = req.query;
         if (title == null && author == null) {
-            const books = await getListBook();
+            const books = await getAllBooks();
             return res.status(201).json(books);
         }
         const book = await searchBook(title, author);

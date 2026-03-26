@@ -42,10 +42,10 @@ function App() {
       {/* ページ遷移 */}
       <button onClick={() => navigate('/mypage')}>マイページ</button>
       {(user.role === "admin" || user.role === "librarian") && (
-        <button onClick={() => navigate('/user')}>ユーザー管理</button>
+        <button onClick={() => navigate('/users')}>ユーザー管理</button>
       )}
       {(user.role === "admin") && (
-        <button onClick={() => navigate('/book')}>書籍管理</button>
+        <button onClick={() => navigate('/books')}>書籍管理</button>
       )}
       {/* 検索 */}
       <input type="text" placeholder="タイトル検索" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} />

@@ -25,7 +25,7 @@ function Top() {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
             setUser(data.user);
-            navigate('/App');
+            navigate('/app');
         }else{
             alert("ログインに失敗しました。メールアドレスとパスワードを確認してください。");
         }

@@ -6,7 +6,7 @@ function MyPage() {
     const API_URL = import.meta.env.VITE_API_URL;
     const [ reservedBook, setReservedBook ] = useState([]);
     const [ loanedBook, setLoanedBook ] = useState([]);
-    const { id } = useParams();
+    // const { id } = useParams();
     const loginUserId = JSON.parse(localStorage.getItem("user")).id;
     //貸出：一覧
     const loanedBookList = async () => {
@@ -26,7 +26,10 @@ function MyPage() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                loginUserId: loginUserId,
+            }),
         });
         const json = await res.json();
     }
@@ -36,7 +39,10 @@ function MyPage() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                loginUserId: loginUserId,
+            }),
         });
         
         const json = await res.json();
@@ -60,7 +66,7 @@ function MyPage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                bookId: bookId,
+                loginUserId: loginUserId,
             }),
         });
         const json = await res.json();
@@ -71,7 +77,10 @@ function MyPage() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                loginUserId: loginUserId,
+            }),
         });
         
         const json = await res.json();

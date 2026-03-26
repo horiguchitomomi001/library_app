@@ -7,7 +7,7 @@ function BookManagement() {
     //共通
     const API_URL = import.meta.env.VITE_API_URL;
     const [ books, setBook ] = useState([]);
-    const { id } = useParams();
+    // const { id } = useParams();
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
     //検索用ステート

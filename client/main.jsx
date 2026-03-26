@@ -10,7 +10,6 @@ import BookDetail from './BookDetail.jsx';
 import User from './UserManagement.jsx';
 import UserDetail from './UserDetail.jsx';
 
-console.log("main.jsxが読み込まれました。");
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

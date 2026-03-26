@@ -6,7 +6,7 @@ function UserManagement() {
     //共通
     const API_URL = import.meta.env.VITE_API_URL;
     const [ users, setUser ] = useState([]);
-    const { id } = useParams();
+    // const { id } = useParams();
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
     //検索用ステート

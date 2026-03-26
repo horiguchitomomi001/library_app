@@ -7,6 +7,7 @@ function BookDetail() {
     const [ book, setBook ] = useState({});
     const { id } = useParams();
     const token = localStorage.getItem("token");
+    const loginUserId = JSON.parse(localStorage.getItem("user")).id;
     //更新用ステート
     const [ putTitle, setTitle ] = useState({});
     const [ putAuthor, setAuthor ] = useState({});
@@ -32,6 +33,7 @@ function BookDetail() {
             },
             body: JSON.stringify({
                 bookId: book.id,
+                loginUserId: loginUserId
             }),
         });
         const json = await res.json();
@@ -46,6 +48,7 @@ function BookDetail() {
             },
             body: JSON.stringify({
                 bookId: book.id,
+                loginUserId: loginUserId
             }),
         });
         const json = await res.json();

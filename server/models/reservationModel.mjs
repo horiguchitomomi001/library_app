@@ -10,7 +10,7 @@ export const getListReservation = async (userId) => {
     return rows;
 };
 //予約
-export const createReservation = async (loginUserId, bookId) => {
+export const createReservation = async (bookId, loginUserId) => {
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();
@@ -19,7 +19,7 @@ export const createReservation = async (loginUserId, bookId) => {
             'SELECT id FROM loans WHERE book_id = ? AND returned_at IS NULL',
             [bookId]
         );
-        if (loans.length <= 0) {
+        if (loans.length > 0) {
             throw new Error('already available');
         }
         //予約確認　未予約
@@ -54,7 +54,8 @@ export const createReservation = async (loginUserId, bookId) => {
     }
 };
 //予約貸出
-export const createFulfillReservation = async (loginUserId, bookId) => {
+export const createFulfillReservation = async (bookId, loginUserId) => {
+    console.log("reservationModel.mjs予約貸出", bookId, loginUserId);
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();
@@ -94,7 +95,8 @@ export const createFulfillReservation = async (loginUserId, bookId) => {
     }
 };
 //キャンセル
-export const cancelReservation = async (loginUserId, bookId) => {
+export const cancelReservation = async (bookId, loginUserId) => {
+    console.log("reservationModel.mjsキャンセル", bookId, loginUserId);
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();

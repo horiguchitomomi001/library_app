@@ -14,7 +14,7 @@ export const getListLoan = async (userId) => {
     }
 }; 
 //貸出
-export const createLoan = async (loginUserId, bookId) => {
+export const createLoan = async (bookId, loginUserId) => {
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();
@@ -49,14 +49,14 @@ export const createLoan = async (loginUserId, bookId) => {
     }
 };
 //返却
-export const returnLoan = async (loginUserId, loanId) => {
+export const returnLoan = async (bookId, loginUserId) => {
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();
         //  貸出者確認
         const [rows] = await conn.query(
             'SELECT id FROM loans WHERE book_id = ? AND user_id = ? AND returned_at IS NULL',
-            [loanId, loginUserId]
+            [bookId, loginUserId]
         );
         if (rows.length === 0) {
             throw new Error('not your reservation');
@@ -64,12 +64,12 @@ export const returnLoan = async (loginUserId, loanId) => {
         // loans.returned_at
         await conn.query(
             'UPDATE loans SET returned_at = NOW() WHERE book_id = ?',
-            [loanId]
+            [bookId]
         );
         // books.status=‘available’
         await conn.query(
             'UPDATE books SET status = "available" WHERE id = ?',
-            [loanId]
+            [bookId]
         );
 
         await conn.commit();
@@ -83,21 +83,21 @@ export const returnLoan = async (loginUserId, loanId) => {
     }
 };
 //延長
-export const extendLoan = async (loginUserId, loanId) => {
+export const extendLoan = async (bookId, loginUserId) => {
     const conn = await db.getConnection();
     try {
         await conn.beginTransaction();
         //  貸出者確認
         const [rows] = await conn.query(
             'SELECT id FROM loans WHERE book_id = ? AND user_id = ? AND returned_at IS NULL',
-            [loanId, loginUserId]
+            [bookId, loginUserId]
         );
         if (rows.length === 0) {
             throw new Error('not your reservation');
         }
         await conn.query(
             'UPDATE loans SET due_date = DATE_ADD(due_date, INTERVAL 14 DAY)  WHERE book_id = ? AND returned_at IS NULL',
-            [loanId]
+            [bookId]
         );
         await conn.commit();
         return { success: true };

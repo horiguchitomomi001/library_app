@@ -13,11 +13,11 @@ export const fetchListLoan = async (req, res) => {
 //貸出
 export const fetchCreateLoan = async (req, res) => {
     try {
-        const { bookId } = req.body;
+        const { bookId, loginUserId } = req.body;
         if(bookId == null || !Number.isInteger(Number(bookId)) || Number(bookId) <= 0) {
             return res.status(400).json({ message: 'Invalid book ID' });
         }
-        const newLoan = await createLoan( bookId );
+        const newLoan = await createLoan( bookId, loginUserId );
         res.status(201).json(newLoan);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -27,10 +27,11 @@ export const fetchCreateLoan = async (req, res) => {
 export const fetchReturnLoan = async (req, res) => {
     try {
         const { bookId } = req.params;
+        const { loginUserId } = req.body;
         if (bookId == null || !Number.isInteger(Number(bookId)) || Number(bookId) <= 0) {
             return res.status(400).json({ message: 'Invalid loan ID' });
         }
-        const result = await returnLoan( bookId );
+        const result = await returnLoan( bookId, loginUserId );
         res.status(201).json(result);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -40,10 +41,11 @@ export const fetchReturnLoan = async (req, res) => {
 export const fetchExtendLoan = async (req, res) => {
     try {
         const { bookId } = req.params;
+        const { loginUserId } = req.body;
         if (bookId == null || !Number.isInteger(Number(bookId)) || Number(bookId) <= 0) {
             return res.status(400).json({ message: 'Invalid loan ID' });
         }
-        const result = await extendLoan( bookId );
+        const result = await extendLoan( bookId, loginUserId );
         res.status(201).json(result);
     } catch (err) {
         res.status(500).json({ message: err.message });

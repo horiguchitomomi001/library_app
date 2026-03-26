@@ -18,6 +18,16 @@ function UserManagement() {
     const [ addPassword, setAddPassword ] = useState('');
     const [ addRole, setAddRole ] = useState('user');
 
+    // 表示
+    const fetchUsers = async () => {
+        const res = await fetch('http://localhost:3000/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
     //検索
     const searchUsers = async (searchTerm) => {
         const params = new URLSearchParams();
@@ -51,6 +61,9 @@ function UserManagement() {
         const json = await res.json();
         setUser(json);
     }
+    useEffect(() => {
+        fetchUsers();
+    }, []);
     return(
         <>
             {/* 検索 */}

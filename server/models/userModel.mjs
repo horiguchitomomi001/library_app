@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 //---ユーザー
 //一覧
-export const getListUser = async () => {
+export const getAllUser = async () => {
     try{
         const [rows] = await db.query('SELECT * FROM users');
         return rows;

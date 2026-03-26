@@ -1,4 +1,4 @@
-import { getListUser, getUserReservations, getUserLoans, getDetailUser, searchUser, createUser, updateUser, deleteUser, checkUserStatus, checkUserRole } from '../models/userModel.mjs';
+import { getAllUser, getUserReservations, getUserLoans, getDetailUser, searchUser, createUser, updateUser, deleteUser, checkUserStatus, checkUserRole } from '../models/userModel.mjs';
 import bcrypt from "bcrypt";
 const USER_ROLES = ['user', 'librarian', 'admin'];
 
@@ -29,12 +29,22 @@ export const fetchUserLoans = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+//表示
+export const fetchListUser = async (req, res) => {
+    try {
+        const users = await getAllUser();
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 //検索
 export const fetchSearchUser = async (req, res) => {
     try {
         const { name, email, role } = req.query;
         if (name == null && email == null && role == null) {
-            const users = await getListUser();
+            const users = await getAllUser();
             return res.status(201).json(users);
         } 
         const user = await searchUser(name, email, role);

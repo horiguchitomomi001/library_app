@@ -24,8 +24,6 @@ function BookManagement() {
                 'Content-Type': 'application/json'
             }
         });
-        // const json = await res.json();
-        // setBook(json);
     }
     //検索
     const searchBooks = async (searchTerm) => {

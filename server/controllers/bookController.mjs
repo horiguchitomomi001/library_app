@@ -2,15 +2,6 @@ import { getAllBooks, getDetailBook, searchBook, createBook, updateBook, deleteB
 const BOOK_STATUS = ['available', 'borrowed', 'reserved'];
 
 //---書籍
-//表示
-export const fetchListBook = async (req, res) => {
-    try {
-        const books = await getAllBooks();
-        res.status(200).json(books);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-}
 //検索
 export const fetchSearchBook = async (req, res) => {
     try {

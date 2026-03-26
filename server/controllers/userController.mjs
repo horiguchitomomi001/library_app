@@ -30,15 +30,6 @@ export const fetchUserLoans = async (req, res) => {
     }
 };
 
-//表示
-export const fetchListUser = async (req, res) => {
-    try {
-        const users = await getAllUser();
-        res.status(200).json(users);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-};
 //検索
 export const fetchSearchUser = async (req, res) => {
     try {

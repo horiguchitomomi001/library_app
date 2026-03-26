@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 //認証
 export const authenticateUser = async (email, password) => {
     try {
-        const hash = await bcrypt.hash("1111", 10);
         // ユーザー取得
         const [rows] = await db.query(
             "SELECT id, email, password_hash, role FROM users WHERE email = ?",[email]

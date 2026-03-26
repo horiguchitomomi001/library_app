@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { fetchUserReservations, fetchUserLoans, fetchDetailUser, fetchListUser, fetchSearchUser, fetchCreateUser, fetchUpdateUser, fetchDeleteUser } from '../controllers/userController.mjs';
+import { fetchUserReservations, fetchUserLoans, fetchDetailUser, fetchSearchUser, fetchCreateUser, fetchUpdateUser, fetchDeleteUser } from '../controllers/userController.mjs';
 import { authMiddleware } from "../middleware/authMiddleware.mjs";
 import { roleMiddleware } from "../middleware/roleMiddleware.mjs";
 
@@ -12,10 +12,6 @@ router.get('/:userId/reservations', async (req, res) => {
 // マイページ：貸出一覧
 router.get('/:userId/loans', async (req, res) => {
     fetchUserLoans(req, res);
-});
-//表示
-router.get('/', async (req, res) => {
-    fetchListUser(req, res);
 });
 //検索
 router.get('/search', async (req, res) => {

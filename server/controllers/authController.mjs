@@ -2,7 +2,6 @@ import { authenticateUser } from '../models/authModel.mjs';
 
 //認証
 export const auth = async (req, res) => {
-
   try {
     const { email, password } = req.body;
     //バリデーション

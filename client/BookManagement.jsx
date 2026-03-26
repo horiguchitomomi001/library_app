@@ -18,14 +18,6 @@ function BookManagement() {
     const [ addAuthor, setAddAuthor ] = useState('');
 
     // 表示
-    const fetchBooks = async () => {
-        const res = await fetch(`${API_URL}/books`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    }
     //検索
     const searchBooks = async (searchTerm) => {
         const params = new URLSearchParams();
@@ -56,9 +48,6 @@ function BookManagement() {
         const json = await res.json();
         setBook(json);
     }
-    useEffect(() => {
-        fetchBooks();
-    }, []);
     return(
         <>
             {/* 検索 */}

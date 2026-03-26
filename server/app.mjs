@@ -10,7 +10,8 @@ import reservationsRouter from './routes/reservationsRoutes.mjs';
 import usersRouter from './routes/usersRoutes.mjs';
 
 const app = express();
-const PORT = 3000;
+// const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // ===== middleware =====
 app.use(cors());
@@ -20,14 +21,13 @@ app.use('/books', booksRouter);
 app.use('/loans', loansRouter);
 app.use('/reservations', reservationsRouter);
 app.use('/users', usersRouter);
-app.use('/users/:userId/reservations', usersRouter);
-app.use('/users/:userId/loans', usersRouter);
-
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.use('/users/:userId/reservations', usersRouter);
+// app.use('/users/:userId/loans', usersRouter);
 
 app.get("/", (req, res) => {
   res.send("Server is running!");
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

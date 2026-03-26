@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function BookManagement() {
 
     //共通
+    const API_URL = import.meta.env.VITE_API_URL;
     const [ books, setBook ] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function BookManagement() {
 
     // 表示
     const fetchBooks = async () => {
-        const res = await fetch('http://localhost:3000/books', {
+        const res = await fetch(`${API_URL}/books`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +31,7 @@ function BookManagement() {
         const params = new URLSearchParams();
         if (searchTitle) params.append('title', searchTitle);
         if (searchAuthor) params.append('author', searchAuthor);
-        const res = await fetch(`http://localhost:3000/books/search?${params.toString()}`, {
+        const res = await fetch(`${API_URL}/books/search?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +42,7 @@ function BookManagement() {
     }  
     // 追加
     const postData = async () => {
-        const res = await fetch('http://localhost:3000/books', {
+        const res = await fetch(`${API_URL}/books`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

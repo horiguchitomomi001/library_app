@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function App() {
   //共通
+  const API_URL = import.meta.env.VITE_API_URL;
   const [books, setBook] = useState([]);
   const [user, setUser] = useState([]);
   //検索
@@ -26,7 +27,7 @@ function App() {
     const params = new URLSearchParams();
     if (searchTitle) params.append('title', searchTitle);
     if (searchAuthor) params.append('author', searchAuthor);
-    const res = await fetch(`http://localhost:3000/books/search?${params.toString()}`, {
+    const res = await fetch(`${API_URL}/books/search?${params.toString()}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

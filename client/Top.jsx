@@ -3,16 +3,17 @@ import './App.css'
 import { useNavigate } from 'react-router-dom';
 
 function Top() {
+    const API_URL = import.meta.env.VITE_API_URL;
     //ログイン
     const [userMail, setMail] = useState('');
     const [userPassword, setPassword] = useState('');
     const [user, setUser] = useState([]);
     //詳細遷移
     const navigate = useNavigate();
-
+    
     // ログイン
     const userLogin = async () => {
-        const res = await fetch(`http://localhost:3000/auth`, {
+        const res = await fetch(`${API_URL}/auth`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

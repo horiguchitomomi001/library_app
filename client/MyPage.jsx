@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 
 function MyPage() {
     //共通
+    const API_URL = import.meta.env.VITE_API_URL;
     const [ reservedBook, setReservedBook ] = useState([]);
     const [ loanedBook, setLoanedBook ] = useState([]);
     const { id } = useParams();
     const loginUserId = JSON.parse(localStorage.getItem("user")).id;
     //貸出：一覧
     const loanedBookList = async () => {
-        const res = await fetch(`http://localhost:3000/users/${loginUserId}/loans`, {
+        const res = await fetch(`${API_URL}/users/${loginUserId}/loans`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +22,7 @@ function MyPage() {
     //貸出：返却
     const returnBook = async (bookId) => {
 
-        const res = await fetch(`http://localhost:3000/loans/${bookId}/return`, {
+        const res = await fetch(`${API_URL}/loans/${bookId}/return`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +32,7 @@ function MyPage() {
     }
     //貸出：延長
     const extendBook = async (bookId) => {
-        const res = await fetch(`http://localhost:3000/loans/${bookId}/extend`, {
+        const res = await fetch(`${API_URL}/loans/${bookId}/extend`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +43,7 @@ function MyPage() {
     }
     //予約：一覧
     const reservedBookList = async () => {
-        const res = await fetch(`http://localhost:3000/users/${loginUserId}/reservations`, {
+        const res = await fetch(`${API_URL}/users/${loginUserId}/reservations`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ function MyPage() {
     }
     //予約：貸出
     const fulfillReservation = async (bookId) => {
-        const res = await fetch(`http://localhost:3000/reservations/${bookId}/loan`, {
+        const res = await fetch(`${API_URL}/reservations/${bookId}/loan`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +67,7 @@ function MyPage() {
     }  
     //予約：キャンセル
     const cancelBook = async (bookId) => {
-        const res = await fetch(`http://localhost:3000/reservations/${bookId}/cancel`, {
+        const res = await fetch(`${API_URL}/reservations/${bookId}/cancel`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

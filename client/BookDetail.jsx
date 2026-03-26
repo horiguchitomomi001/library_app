@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function BookDetail() {
     //共通
+    const API_URL = import.meta.env.VITE_API_URL;
     const [ book, setBook ] = useState({});
     const { id } = useParams();
     const token = localStorage.getItem("token");
@@ -13,7 +14,7 @@ function BookDetail() {
 
     //詳細
     const fetchBook = async () => {
-        const res = await fetch(`http://localhost:3000/books/${id}`, {
+        const res = await fetch(`${API_URL}/books/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +25,7 @@ function BookDetail() {
     }
     //貸出
     const loansBook = async () => {
-        const res = await fetch(`http://localhost:3000/loans`, {
+        const res = await fetch(`${API_URL}/loans`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +39,7 @@ function BookDetail() {
     }
     //予約
     const reserveBook = async () => {
-        const res = await fetch(`http://localhost:3000/reservations`, {
+        const res = await fetch(`${API_URL}/reservations`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +53,7 @@ function BookDetail() {
     }
     // 更新
     const putData = async (bookId) => {
-        const res = await fetch(`http://localhost:3000/books/${bookId}`, {
+        const res = await fetch(`${API_URL}/books/${bookId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ function BookDetail() {
     }
     // 削除
     const deleteData = async (bookId) => {
-        const res = await fetch(`http://localhost:3000/books/${bookId}`, {
+        const res = await fetch(`${API_URL}/books/${bookId}`, {
             method: 'DELETE',
             headers: {
             'Content-Type': 'application/json',

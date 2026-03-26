@@ -17,6 +17,22 @@
 - 書籍管理
 - ログイン認証 / 権限管理
 
+## 環境構築手順
+
+### テストアカウント
+　git clone ...
+　cd library_app
+　npm install
+
+### 環境変数
+　DB_HOST=localhost
+　DB_USER=root
+　DB_PASSWORD=password123
+　JWT_SECRET=library_secret_key
+
+### 起動方法
+
+
 ## デプロイ
 
 ## 工夫した点

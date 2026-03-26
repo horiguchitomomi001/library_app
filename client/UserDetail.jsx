@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function UserDetail() {
     //共通
+    const API_URL = import.meta.env.VITE_API_URL;
     const [ user, setUser ] = useState({});
     const { id } = useParams();
     const token = localStorage.getItem("token");
@@ -15,7 +16,7 @@ function UserDetail() {
 
     //詳細
     const fetchUser = async () => {
-        const res = await fetch(`http://localhost:3000/users/${id}`, {
+        const res = await fetch(`${API_URL}/users/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ function UserDetail() {
     }
     //更新
     const putUser = async (userId) => {
-        const res = await fetch(`http://localhost:3000/users/${userId}`, {
+        const res = await fetch(`${API_URL}/users/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +46,7 @@ function UserDetail() {
     }   
     //削除
     const deleteUser = async (userId) => {
-        const res = await fetch(`http://localhost:3000/users/${userId}`, {
+        const res = await fetch(`${API_URL}/users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

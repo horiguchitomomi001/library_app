@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function UserManagement() { 
     //共通
+    const API_URL = import.meta.env.VITE_API_URL;
     const [ users, setUser ] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ function UserManagement() {
 
     // 表示
     const fetchUsers = async () => {
-        const res = await fetch('http://localhost:3000/users', {
+        const res = await fetch(`${API_URL}/users`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +35,7 @@ function UserManagement() {
         if (searchName) params.append('name', searchName);
         if (searchEmail) params.append('email', searchEmail);
         if (searchRole) params.append('role', searchRole);
-        const res = await fetch(`http://localhost:3000/users/search?${params.toString()}`, {
+        const res = await fetch(`${API_URL}/users/search?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +46,7 @@ function UserManagement() {
     }
     //追加
     const postUser = async () => {
-        const res = await fetch('http://localhost:3000/users', {
+        const res = await fetch(`${API_URL}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

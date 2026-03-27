@@ -54,22 +54,28 @@ function UserManagement() {
     }
     return(
         <>
-            {/* 検索 */}
-            <input type="text" placeholder="名前検索" value={searchName} onChange={(e) => setSearchName(e.target.value)} />
-            <input type="text" placeholder="メールアドレス検索" value={searchEmail} onChange={(e) => setSearchEmail(e.target.value)} />
-            <input type="text" placeholder="ロール検索" value={searchRole} onChange={(e) => setSearchRole(e.target.value)} />
-            <button onClick={searchUsers}>検索</button>
-
-            {/* 追加 */}
-            <input type="text" value={addName} placeholder="名前追加" onChange={(e) => setAddName(e.target.value)}></input>
-            <input type="text" value={addEmail} placeholder="メール追加" onChange={(e) => setAddEmail(e.target.value)}></input>
-            <input type="password" value={addPassword} placeholder="パスワード追加" onChange={(e) => setAddPassword(e.target.value)}></input>
-            <select value={addRole} placeholder="ロール追加" onChange={(e) => setAddRole(e.target.value)}>
-                <option value="user">ユーザー</option>
-                <option value="librarian">司書</option>
-                <option value="admin">管理者</option>
-            </select>
-            <button type="button" onClick={postUser}>追加</button>
+            <h2>アカウント管理</h2>
+            <div className="content">
+                <div className="userAdd">
+                    <h3>アカウント追加</h3>
+                    <input type="text" value={addName} placeholder="名前追加" onChange={(e) => setAddName(e.target.value)}></input>
+                    <input type="text" value={addEmail} placeholder="メール追加" onChange={(e) => setAddEmail(e.target.value)}></input>
+                    <input type="password" value={addPassword} placeholder="パスワード追加" onChange={(e) => setAddPassword(e.target.value)}></input>
+                    <select value={addRole} placeholder="ロール追加" onChange={(e) => setAddRole(e.target.value)}>
+                        <option value="user">ユーザー</option>
+                        <option value="librarian">司書</option>
+                        <option value="admin">管理者</option>
+                    </select>
+                    <button type="button" onClick={postUser}>追加</button>
+                </div>
+                <div className="userSearch">
+                    <h3>アカウント検索</h3>
+                    <input type="text" placeholder="名前検索" value={searchName} onChange={(e) => setSearchName(e.target.value)} />
+                    <input type="text" placeholder="メールアドレス検索" value={searchEmail} onChange={(e) => setSearchEmail(e.target.value)} />
+                    <input type="text" placeholder="ロール検索" value={searchRole} onChange={(e) => setSearchRole(e.target.value)} />
+                    <button onClick={searchUsers}>検索</button>
+                </div>
+            </div>
 
             {/* テーブル表示 */}
             {users.length > 0 &&(

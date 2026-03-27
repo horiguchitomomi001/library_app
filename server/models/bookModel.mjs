@@ -23,7 +23,6 @@ export const searchBook = async (title, author) => {
             sql += ' AND author LIKE ?';
             params.push(`%${author}%`);
         }
-        console.log("bookModel.mjs", sql, params);
         const [rows] = await db.query(sql, params);
         return rows;
     } catch (err) {

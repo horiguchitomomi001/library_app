@@ -94,7 +94,8 @@ function MyPage() {
 
     return(
         <>
-        <p>貸出一覧</p>
+        <h2>マイページ</h2>
+        <h3>貸出一覧</h3>
         {loanedBook.length > 0 &&(
             <table>
             <thead>
@@ -122,7 +123,7 @@ function MyPage() {
         )}
 
 
-        <p>予約一覧</p>
+        <h3>予約一覧</h3>
         {reservedBook.length > 0 &&(
             <table>
             <thead>

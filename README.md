@@ -39,6 +39,12 @@
 
 <br />
 
+### トップ画面イメージ
+
+![トップ画面イメージ](./client/topImage.png)
+
+<br />
+
 ## 環境構築
 
 ### 環境変数
@@ -115,7 +121,7 @@
 ## API設計
 ### 【books】
 
-<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width: 100%;display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |検索		|		|
@@ -171,7 +177,7 @@
 
 ### 【users】
 
-<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:100%; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |予約一覧		|		|
@@ -247,7 +253,7 @@
 
 ### 【loans】
 
-<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:100%; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |一覧		|		|
@@ -298,7 +304,7 @@
 
 ### 【reservations】
 
-<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:100%; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |一覧		|		|

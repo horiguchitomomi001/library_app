@@ -50,15 +50,21 @@ function BookManagement() {
     }
     return(
         <>
-            {/* 検索 */}
-            <input type="text" placeholder="タイトル検索" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} />
-            <input type="text" placeholder="著者検索" value={searchAuthor} onChange={(e) => setSearchAuthor(e.target.value)} />
-            <button onClick={searchBooks}>検索</button>
-            
-            {/* 追加 */}
-            <input type="text" value={addTitle} placeholder="タイトル追加" onChange={(e) => setAddTitle(e.target.value)}></input>
-            <input type="text" value={addAuthor} placeholder="著者追加" onChange={(e) => setAddAuthor(e.target.value)}></input>
-            <button type="button" onClick={postData}>追加</button>
+            <h2>書籍管理</h2>
+            <div className="content">
+                <div className="bookAdd">
+                    <h3>書籍追加</h3>
+                    <input type="text" value={addTitle} placeholder="タイトル追加" onChange={(e) => setAddTitle(e.target.value)}></input>
+                    <input type="text" value={addAuthor} placeholder="著者追加" onChange={(e) => setAddAuthor(e.target.value)}></input>
+                    <button type="button" onClick={postData}>追加</button>
+                </div>
+                <div className="bookSearch">
+                    <h3>書籍検索</h3>
+                    <input type="text" placeholder="タイトル検索" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} />
+                    <input type="text" placeholder="著者検索" value={searchAuthor} onChange={(e) => setSearchAuthor(e.target.value)} />
+                    <button onClick={searchBooks}>検索</button>
+                </div>   
+            </div>
 
             {/* テーブル表示 */}
             {books.length > 0 &&(

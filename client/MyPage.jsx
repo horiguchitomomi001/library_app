@@ -85,6 +85,10 @@ function MyPage() {
         
         const json = await res.json();
     } 
+    //日付フォーマット
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleString("ja-JP");
+    };
 
     //貸出一覧
     useEffect(() => {
@@ -111,7 +115,7 @@ function MyPage() {
                 <tr key={book.id}>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
-                    <td>{book.due_date}</td>
+                    <td>{formatDate(book.due_date)}</td>
                     <td>
                         <button onClick={() => returnBook(book.book_id)}>返却</button>
                         <button onClick={() => extendBook(book.book_id)}>延長</button>
@@ -139,7 +143,7 @@ function MyPage() {
                 <tr key={book.id}>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
-                    <td>{book.reserved_at}</td>
+                    <td>{formatDate(book.reserved_at)}</td>
                     <td>
                         <button onClick={() => fulfillReservation(book.book_id)}>貸出</button>
                         <button onClick={() => cancelBook(book.book_id)}>キャンセル</button>

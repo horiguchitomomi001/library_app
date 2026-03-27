@@ -8,7 +8,7 @@
 
 <br />
 
-## 概要
+## システム概要
 書籍の貸出・予約・管理を行うWebアプリケーションです。
 
 <br />
@@ -115,7 +115,7 @@
 ## API設計
 ### 【books】
 
-<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |検索		|		|
@@ -171,7 +171,7 @@
 
 ### 【users】
 
-<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |予約一覧		|		|
@@ -247,7 +247,7 @@
 
 ### 【loans】
 
-<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |一覧		|		|
@@ -298,7 +298,7 @@
 
 ### 【reservations】
 
-<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div style="width:80vw; display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
 <div>
 
 |一覧		|		|

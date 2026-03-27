@@ -78,14 +78,14 @@
 <br />
 
 ## データベース設計
-### books
+### 【books】
 - id
 - title
 - author
 - status(available未貸出/borrowed貸出中/reserved予約中)
 - created_at
 
-### users
+### 【users】
 - id
 - name
 - email
@@ -93,7 +93,7 @@
 - role (user / librarian / admin)
 - created_at
 
-### loans
+### 【loans】
 - id
 - user_id (FK → users.id)
 - book_id (FK → books.id)
@@ -101,7 +101,7 @@
 - due_date(返却期限)
 - returned_at (返却日時)
 
-### reservations
+### 【reservations】
 - id (PK)
 - user_id (FK → users.id)
 - book_id (FK → books.id)
@@ -113,7 +113,10 @@
 
 
 ## API設計
-### books
+### 【books】
+
+<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div>
 
 |検索		|		|
 | ------ |	------ |
@@ -122,7 +125,8 @@
 |params  | params.toString()|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |詳細		|		|
 | ------ |	------ |
@@ -131,7 +135,8 @@
 |params  | bookId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |追加		|		|
 | ------ |	------ |
@@ -140,7 +145,8 @@
 |params  | ー|
 |body    | title,author|
 
-<br />
+</div>
+<div>
 
 |更新		|		|
 | ------ |	------ |
@@ -149,7 +155,8 @@
 |params  | bookId|
 |body    | title, author, status|
 
-<br />
+</div>
+<div>
 
 |削除		|		|
 | ------ |	------ |
@@ -158,9 +165,14 @@
 |params  | bookId|
 |body    | ー|
 
+</div>
+</div>
 <br />
 
-### users
+### 【users】
+
+<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div>
 
 |予約一覧		|		|
 | ------ |	------ |
@@ -169,7 +181,8 @@
 |params  | userId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |貸出一覧		|		|
 | ------ |	------ |
@@ -178,7 +191,8 @@
 |params  | userId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |検索		|		|
 | ------ |	------ |
@@ -187,7 +201,8 @@
 |params  | params.toString()|
 |body    | |
 
-<br />
+</div>
+<div>
 
 |詳細		|		|
 | ------ |	------ |
@@ -196,7 +211,8 @@
 |params  | userId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |追加		|		|
 | ------ |	------ |
@@ -205,7 +221,8 @@
 |params  | ー|
 |body    | name, email, password, role|
 
-<br />
+</div>
+<div>
 
 |更新		|		|
 | ------ |	------ |
@@ -214,7 +231,8 @@
 |params  | userId|
 |body    | name, email, oldPassword, password, role|
 
-<br />
+</div>
+<div>
 
 |削除		|		|
 | ------ |	------ |
@@ -223,9 +241,14 @@
 |params  | userId|
 |body    | ー|
 
+</div>
+</div>
 <br />
 
-### loans
+### 【loans】
+
+<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div>
 
 |一覧		|		|
 | ------ |	------ |
@@ -234,7 +257,8 @@
 |params  | loginUserId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 |貸出		|		|
 | ------ |	------ |
@@ -245,7 +269,8 @@
 |update  | book.status=“borrowed”|
 |		 | loans追加|
 
-<br />
+</div>
+<div>
 
 |返却		|		|
 | ------ |	------ |
@@ -256,7 +281,8 @@
 |update  | books.status = ‘available’|
 |		 | loans.returned_at|
 
-<br />
+</div>
+<div>
 
 |延長		|		|
 | ------ |	------ |
@@ -266,9 +292,14 @@
 |body    | ー|
 |update  | loans.due_date|
 
+</div>
+</div>
 <br />
 
-### reservations
+### 【reservations】
+
+<div style="display: flex; gap: 40px; flex-direction:row;flex-wrap:wrap;">
+<div>
 
 |一覧		|		|
 | ------ |	------ |
@@ -277,7 +308,8 @@
 |params  | loginUserId|
 |body    | ー|
 
-<br />
+</div>
+<div>
 
 
 |予約		|		|
@@ -290,7 +322,8 @@
 |update  | book.status=“reserved”|
 |		 | reservations追加|
 
-<br />
+</div>
+<div>
 
 |予約貸出		|		|
 | ------ |	------ |
@@ -302,7 +335,8 @@
 |		|	reservations.status=“fulfilled”|
 |		|    loans追加|
 
-<br />
+</div>
+<div>
 
 |キャンセル		|		|
 | ------ |	------ |
@@ -312,12 +346,14 @@
 |body    | loginUserId|
 |update  | book.status=“canceled”|
 
+</div>
+</div>
 <br />
 
 
 ## 権限・条件設計
 
-### user
+### 【user】
 
 |画面		|機能		|権限		|条件		|
 | -------- | -------- | -------- | -------- |
@@ -336,7 +372,7 @@
 
 <br />
 
-### librarian
+### 【librarian】
 
 |画面		|機能		|権限		|条件		|
 | -------- | -------- | -------- | -------- |
@@ -346,7 +382,7 @@
 
 <br />
 
-### admin
+### 【admin】
 
 |画面		|機能		|権限		|条件		|
 | -------- | -------- | -------- | -------- |

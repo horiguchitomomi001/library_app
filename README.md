@@ -65,7 +65,7 @@
 |DB_USER		 | root|
 |DB_PASSWORD	 | -|
 |DB_NAME	 	| library_app|
-|JWT_SECRET		| library_secret_key	|
+|JWT_SECRET		| -	|
 |VITE_API_URL	 | http://localhost:3000|
 
 <br />
@@ -78,9 +78,15 @@
 <br />
 
 ## 工夫した点
-- JWTによる認証機能の実装
-- トランザクションによるデータ整合性の担保
-- ファイル構成による責務分離
+ - JWTによる認証機能の実装<br />
+React+node.jsとの相性を加味し、トークン形式のJWTを採用いたしました。
+<br />
+
+ - トランザクションによるデータ整合性の担保<br />
+model内の複数SQLがあるメソッドに関しては、commit/rollback/releaseを実装しております。
+<br />
+ - ファイル構成による責務分離<br />
+サーバーサイドはRoute/Controller/Model/Middleware等のファイル構成で役割分担をし、保守性や再利用性を図りました。
 
 <br />
 
@@ -89,7 +95,10 @@
 - 状態管理の最適化
 - 権限確認を、authMiddlewareに書換え
 - バリデーションを、express-validatorに書換え
-- 新しい制作へ挑戦(動物病院予約サイト,アサーション練習アプリ,ジャーナリングアプリ　等々)
+- 新しい制作へ挑戦<br />
+	* カレンダー形式の動物病院予約サイト<br />
+	* 子育て世代を対象としたアサーション練習アプリ<br />
+	* カスタム可能な体調モニタリング+ジャーナリングアプリ
 
 <br />
 

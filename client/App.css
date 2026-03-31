@@ -13,13 +13,16 @@
   justify-content: center;
   flex-direction: column;
   gap: 3em; 
-  /* height: 100vh; */
   table{
     margin: 0 auto;
   }
 }
+
 /* ログインページ */
-.loginArea{
+.loginArea,
+/* アプリページ */
+.menuBtn,
+.bookTopSearch{
   input{
     width: 15em;
     margin: 0 3px;
@@ -28,21 +31,18 @@
     margin: 1em 0 0 1em;
   }
 }
-/* アプリページ */
+
 /* マイページ */
-.loanList{
-  h2{
-    margin-bottom: 2em;
-  } 
-}
+.loanList,
 .reservationList{
   h2{
     margin-bottom: 2em;
-  }
-  table{
-    margin: 0 auto;
   } 
 }
+
+/* 書籍管理 */
+.bookAdd,
+.bookSearch,
 /* ユーザー管理 */
 .userAdd,
 .userSearch{
@@ -54,7 +54,10 @@
     margin: 1em 0 0 1em;
   }
 }
+
 /* ユーザー詳細 */
+.bookUpdate,
+/* 書籍詳細 */
 .userUpdate{
   width: 80%;
   margin: 0 auto;
@@ -69,31 +72,3 @@
     margin: 1em 0 0;
   }
 }
-/* 書籍管理 */
-.bookAdd,
-.bookSearch{
-  input{
-    width: 15em;
-    margin: 0 3px;
-  }
-  button{
-    margin: 1em 0 0 1em;
-  }
-}
-/* 書籍詳細 */
-.bookUpdate{
-  width: 80%;
-  margin: 0 auto;
-  input{
-    width: 15em;
-    margin: 0 3px;
-  }
-  select{
-    margin: 0 3px;
-  }
-  .btnArea{
-    margin: 1em 0 0;
-  }
-}
-
-

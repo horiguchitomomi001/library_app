@@ -98,61 +98,65 @@ function MyPage() {
 
     return(
         <>
-        <h2>マイページ</h2>
-        <h3>貸出一覧</h3>
-        {loanedBook.length > 0 &&(
-            <table>
-            <thead>
-                <tr>
-                <th>タイトル</th>
-                <th>著者</th>
-                <th>返却予定日</th>
-                <th>返却/延長</th>
-                </tr>
-            </thead>
-            <tbody>
-                {loanedBook.map(book => (
-                <tr key={book.id}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{formatDate(book.due_date)}</td>
-                    <td>
-                        <button onClick={() => returnBook(book.book_id)}>返却</button>
-                        <button onClick={() => extendBook(book.book_id)}>延長</button>
-                    </td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
-        )}
-
-
-        <h3>予約一覧</h3>
-        {reservedBook.length > 0 &&(
-            <table>
-            <thead>
-                <tr>
-                <th>タイトル</th>
-                <th>著者</th>
-                <th>予約日</th>
-                <th>貸出/解除</th>
-                </tr>
-            </thead>
-            <tbody>
-                {reservedBook.map(book => (
-                <tr key={book.id}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                    <td>{formatDate(book.reserved_at)}</td>
-                    <td>
-                        <button onClick={() => fulfillReservation(book.book_id)}>貸出</button>
-                        <button onClick={() => cancelBook(book.book_id)}>キャンセル</button>
-                    </td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
-        )}
+            <h2>マイページ</h2>
+            <div className="content">
+                <div className="loanList">
+                    <h3>貸出一覧</h3>
+                    {loanedBook.length > 0 &&(
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>タイトル</th>
+                            <th>著者</th>
+                            <th>返却予定日</th>
+                            <th>返却/延長</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {loanedBook.map(book => (
+                            <tr key={book.id}>
+                                <td>{book.title}</td>
+                                <td>{book.author}</td>
+                                <td>{formatDate(book.due_date)}</td>
+                                <td>
+                                    <button onClick={() => returnBook(book.book_id)}>返却</button>
+                                    <button onClick={() => extendBook(book.book_id)}>延長</button>
+                                </td>
+                            </tr>
+                            ))}
+                        </tbody>
+                        </table>
+                    )}
+                </div>
+                <div className="reservationList">
+                    <h3>予約一覧</h3>
+                    {reservedBook.length > 0 &&(
+                        <table>
+                            <thead>
+                                <tr>
+                                <th>タイトル</th>
+                                <th>著者</th>
+                                <th>予約日</th>
+                                <th>貸出/解除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {reservedBook.map(book => (
+                                <tr key={book.id}>
+                                    <td>{book.title}</td>
+                                    <td>{book.author}</td>
+                                    <td>{formatDate(book.reserved_at)}</td>
+                                    <td>
+                                        <button onClick={() => fulfillReservation(book.book_id)}>貸出</button>
+                                        <button onClick={() => cancelBook(book.book_id)}>キャンセル</button>
+                                    </td>
+                                </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            </div>
         </>
     );
 };

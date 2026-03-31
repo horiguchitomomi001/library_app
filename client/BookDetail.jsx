@@ -97,21 +97,31 @@ function BookDetail() {
 
     return(
         <>
-            <p>タイトル：{book.title}</p>
-            <p>著者：{book.author}</p>
-            <p>貸出状況：{book.status}</p>
-            <button onClick={() => loansBook()}>貸出</button>
-            <button onClick={() => reserveBook()}>予約</button>
-
-            <input type="text" value={putTitle} placeholder="タイトル更新" onChange={(e) =>setTitle(e.target.value)} />
-            <input type="text" value={putAuthor} placeholder="著者更新" onChange={(e) =>setAuthor(e.target.value)} />
-            <select value={putStatus} onChange={(e) => {setStatus(e.target.value)}}>
-                <option value="available">未貸出</option>
-                <option value="borrowed">貸出中</option>
-                <option value="reserved">予約中</option>
-            </select>
-            <button onClick={() => putData(book.id)}>更新</button>
-            <button onClick={() => deleteData(book.id)}>削除</button>
+            <h2>書籍詳細</h2>
+            <div className="content">
+                <div className="bookTable">
+                    <p>タイトル：{book.title}</p>
+                    <p>著者：{book.author}</p>
+                    <p>貸出状況：{book.status}</p>
+                    <button onClick={() => loansBook()}>貸出</button>
+                    <button onClick={() => reserveBook()}>予約</button>
+                </div>
+                
+                <div className="bookUpdate">
+                    <h3>書籍情報更新</h3>
+                    <input type="text" value={putTitle} placeholder="タイトル更新" onChange={(e) =>setTitle(e.target.value)} />
+                    <input type="text" value={putAuthor} placeholder="著者更新" onChange={(e) =>setAuthor(e.target.value)} />
+                    <select value={putStatus} onChange={(e) => {setStatus(e.target.value)}}>
+                        <option value="available">未貸出</option>
+                        <option value="borrowed">貸出中</option>
+                        <option value="reserved">予約中</option>
+                    </select>
+                    <div className="btnArea">
+                        <button onClick={() => putData(book.id)}>更新</button>
+                        <button onClick={() => deleteData(book.id)}>削除</button>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

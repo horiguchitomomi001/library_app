@@ -71,21 +71,30 @@ function UserDetail() {
 
     return(
         <>
-            <p>氏名：{user.name}</p>
-            <p>メール：{user.email}</p>
-            <p>ロール：{user.role}</p>
-
-            <input type="text" value={putName} placeholder="名前更新"   onChange={(e) =>setName(e.target.value)} />
-            <input type="text" value={putEmail} placeholder="メール更新" onChange={(e) =>setEmail(e.target.value)} />
-            <input type="password" placeholder="旧パスワード" onChange={(e) =>setOldPassword(e.target.value)} />
-            <input type="password" placeholder="パスワード更新" onChange={(e) =>setPassword(e.target.value)} />
-            <select value={putRole} onChange={(e) =>setRole(e.target.value)}>
-                <option value="user">ユーザー</option>
-                <option value="librarian">司書</option>
-                <option value="admin">管理者</option>
-            </select>
-            <button onClick={() => putUser(user.id)}>更新</button>
-            <button onClick={() => deleteUser(user.id)}>削除</button>
+            <h2>ユーザー詳細</h2>
+            <div className="content">
+                <div className="userTable">
+                    <p>氏名：{user.name}</p>
+                    <p>メール：{user.email}</p>
+                    <p>ロール：{user.role}</p>
+                </div>
+                <div className="userUpdate">
+                    <h3>ユーザー情報更新</h3>
+                    <input type="text" value={putName} placeholder="名前更新"   onChange={(e) =>setName(e.target.value)} />
+                    <input type="text" value={putEmail} placeholder="メール更新" onChange={(e) =>setEmail(e.target.value)} />
+                    <input type="password" placeholder="旧パスワード" onChange={(e) =>setOldPassword(e.target.value)} />
+                    <input type="password" placeholder="パスワード更新" onChange={(e) =>setPassword(e.target.value)} />
+                    <select value={putRole} onChange={(e) =>setRole(e.target.value)}>
+                        <option value="user">ユーザー</option>
+                        <option value="librarian">司書</option>
+                        <option value="admin">管理者</option>
+                    </select>
+                    <div className="btnArea">
+                        <button onClick={() => putUser(user.id)}>更新</button>
+                        <button onClick={() => deleteUser(user.id)}>削除</button>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

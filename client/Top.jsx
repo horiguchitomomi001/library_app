@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+// import './App.css'
 import { useNavigate } from 'react-router-dom';
 
 function Top() {
@@ -33,10 +33,14 @@ function Top() {
 
   return (
     <>
-      {/* ログイン */}
-      <input type="text" placeholder="メールアドレス" value={userMail} onChange={(e) => setMail(e.target.value)} />
-      <input type="password" placeholder="パスワード" value={userPassword} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={userLogin}>ログイン</button>
+      <h2>△△△高校図書館</h2>
+      <div className="content">
+        <div className="loginArea">
+          <input type="text" placeholder="メールアドレス" value={userMail} onChange={(e) => setMail(e.target.value)} />
+          <input type="password" placeholder="パスワード" value={userPassword} onChange={(e) => setPassword(e.target.value)} />
+          <button onClick={userLogin}>ログイン</button>
+        </div>
+      </div>
     </>
   )
 }

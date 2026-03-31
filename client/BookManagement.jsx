@@ -64,35 +64,34 @@ function BookManagement() {
                     <input type="text" placeholder="著者検索" value={searchAuthor} onChange={(e) => setSearchAuthor(e.target.value)} />
                     <button onClick={searchBooks}>検索</button>
                 </div>   
+                {/* テーブル表示 */}
+                {books.length > 0 &&(
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>タイトル</th>
+                            <th>著者</th>
+                            <th>貸出状況</th>
+                            <th>詳細</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {books.map(book => (
+                            <tr key={book.id}>
+                                <td>{book.title}</td>
+                                <td>{book.author}</td>
+                                {book.status === 'available' && <td>未貸出</td>}
+                                {book.status === 'borrowed' && <td>貸出中</td>}
+                                {book.status === 'reserved' && <td>予約中</td>}
+                                <td>
+                                <button onClick={() => navigate(`/books/${book.id}`)}>詳細</button>
+                                </td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
-
-            {/* テーブル表示 */}
-            {books.length > 0 &&(
-                <table>
-                <thead>
-                    <tr>
-                    <th>タイトル</th>
-                    <th>著者</th>
-                    <th>貸出状況</th>
-                    <th>詳細</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {books.map(book => (
-                    <tr key={book.id}>
-                        <td>{book.title}</td>
-                        <td>{book.author}</td>
-                        {book.status === 'available' && <td>未貸出</td>}
-                        {book.status === 'borrowed' && <td>貸出中</td>}
-                        {book.status === 'reserved' && <td>予約中</td>}
-                        <td>
-                        <button onClick={() => navigate(`/books/${book.id}`)}>詳細</button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-                </table>
-            )}
         </>
     );
 }

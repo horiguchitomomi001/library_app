@@ -75,37 +75,36 @@ function UserManagement() {
                     <input type="text" placeholder="ロール検索" value={searchRole} onChange={(e) => setSearchRole(e.target.value)} />
                     <button onClick={searchUsers}>検索</button>
                 </div>
+                {/* テーブル表示 */}
+                {users.length > 0 &&(
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>名前</th>
+                            <th>メール</th>
+                            <th>パスワード</th>
+                            <th>権限</th>
+                            <th>詳細</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map(user => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.password}</td>
+                                {user.role === 'user' && <td>ユーザー</td>}
+                                {user.role === 'librarian' && <td>司書</td>}
+                                {user.role === 'admin' && <td>管理者</td>}
+                                <td>
+                                    <button onClick={() => navigate(`/users/${user.id}`)}>詳細</button>
+                                </td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
-
-            {/* テーブル表示 */}
-            {users.length > 0 &&(
-                <table>
-                <thead>
-                    <tr>
-                    <th>名前</th>
-                    <th>メール</th>
-                    <th>パスワード</th>
-                    <th>権限</th>
-                    <th>詳細</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                    <tr key={user.id}>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>{user.password}</td>
-                        {user.role === 'user' && <td>ユーザー</td>}
-                        {user.role === 'librarian' && <td>司書</td>}
-                        {user.role === 'admin' && <td>管理者</td>}
-                        <td>
-                            <button onClick={() => navigate(`/users/${user.id}`)}>詳細</button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-                </table>
-            )}
         </>
     );
 }
